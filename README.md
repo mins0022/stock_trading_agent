@@ -1,2 +1,2 @@
-# 제목
-## 소제목
+# 강화학습 기반 Stock Trading Agent
+## Reference : ~~~
