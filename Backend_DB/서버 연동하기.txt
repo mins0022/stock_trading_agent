@@ -1,0 +1,15 @@
+1. VScode 실행
+
+2. ctrl+shift+p
+>remote-ssh: open confi ~~~
+config파일에 입력, 저장
+Host 192.168.0.143
+    HostName 192.168.0.143
+    User test
+    port 22
+
+3. ctrl+shift+p
+>remote-ssh: connect current window
+enter누르고 pw입력
+pw: test
+이후enter 계속 눌러(linux)
