@@ -1,0 +1,22 @@
+1. mariaDB 설치
+- https://mariadb.com/downloads/
+- pw: 2020bigdata3
+
+2. github(branch: Backend_yh,hj)에서 pull: django 템플릿 생성
+
+3. cmd창
+cd manage.py위치
+C:\py\stock_trading_agent\Backend\StockTradingAgent>manage.py runserver
+C:\py\stock_trading_agent\Backend\StockTradingAgent>python manage.py makemigrations
+C:\py\stock_trading_agent\Backend\StockTradingAgent>python manage.py migrate
+
+4. MySQL Client (MariaDB 10.4(x64))
+Enter password: 2020bigdata3
+MariaDB [(none)]> show databases;
+1) db목록에 kospi20이 없다면,
+create database kospi20;
+use kospi20;
+show tables;
+2) db목록에 kospi20이 있다면,
+use kospi20;
+show tables;
