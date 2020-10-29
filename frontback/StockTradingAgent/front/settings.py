@@ -79,12 +79,12 @@ DATABASES = {
         'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'STA',  #mysql
-        # 'USER': 'root', #root
-        # 'PASSWORD': 'test', #1234
-        # 'HOST': 'localhost', #공백으로 냅두면 default localhost
-        # 'PORT': '3306' #공백으로 냅두면 default 3306
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'STA',  #mysql
+        'USER': 'root', #root
+        'PASSWORD': 'test', #1234
+        'HOST': 'localhost', #공백으로 냅두면 default localhost
+        'PORT': '3306' #공백으로 냅두면 default 3306
         }
 }
 
