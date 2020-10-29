@@ -5,3 +5,4 @@ from django.contrib import messages
 
 def main(request):
     return render(request, 'main/index.html')
+

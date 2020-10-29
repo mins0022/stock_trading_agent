@@ -36,8 +36,8 @@
               <!-- <p class="card-text">기술주</p> -->
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Click!</a>
-            </div>
+              <a href="chart/" class="btn btn-primary" id ="click">Click!</a>
+            </div>  
           </div>
         </div>
   
@@ -348,5 +348,15 @@
     </div>
     <!-- /.container -->
   </body>
+<script>
+  $("#click").click((e) => {
+    locatio.href = '/chart/StockChart'
+  })
 
+  $(document).ready(function(){
+    $("#click").click(function(){
+      $("div").css({"background-color" : "yello", "font-size" : "200%"})
+    })
+  })
+</script>
 </html>
