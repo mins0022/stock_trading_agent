@@ -48,7 +48,8 @@ class Agent:
         self.profitloss = 0  # 현재 손익
         self.base_profitloss = 0  # 직전 지연 보상 이후 손익
         self.exploration_base = 0  # 탐험 행동 결정 기준
-
+        self.last_action = 0  # 마지막 행동 예측
+        
         # Agent 클래스의 상태
         self.ratio_hold = 0  # 주식 보유 비율
         self.ratio_portfolio_value = 0  # 포트폴리오 가치 비율

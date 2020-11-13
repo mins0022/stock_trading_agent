@@ -43,7 +43,7 @@ COLUMNS_TRAINING_DATA_V2 = [
     # 'market_kospi_ma60_ratio', 'market_kospi_ma120_ratio', 
     # 'bond_k3y_ma5_ratio', 'bond_k3y_ma20_ratio', 
     # 'bond_k3y_ma60_ratio', 'bond_k3y_ma120_ratio'
-    'label', 'economics','IT','finance','social','politics'
+    # 'label', 'economics','IT','finance','social','politics'
 ]
 
 

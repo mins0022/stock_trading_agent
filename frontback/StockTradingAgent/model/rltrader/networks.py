@@ -20,9 +20,9 @@ if os.environ['KERAS_BACKEND'] == 'tensorflow':
     from tensorflow.keras.layers import Input, Dense, LSTM, Conv2D, \
         BatchNormalization, Dropout, MaxPooling2D, Flatten
     from tensorflow.keras.optimizers import SGD
-    from tensorflow.keras.backend import set_session
+    from tensorflow.compat.v1.keras.backend import set_session
     import tensorflow as tf
-    graph = tf.get_default_graph()
+    graph = tf.compat.v1.get_default_graph()
     sess = tf.compat.v1.Session()
 elif os.environ['KERAS_BACKEND'] == 'plaidml.keras.backend':
     from keras.models import Model

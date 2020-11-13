@@ -287,11 +287,12 @@ class ReinforcementLearner:
                 self.agent.reset_exploration()
             else:
                 epsilon = start_epsilon
-
+            # last_action = None
             while True:
                 # 샘플 생성
                 next_sample = self.build_sample()
                 if next_sample is None:
+                    # last_action = self.memory_action
                     break
 
                 # num_steps만큼 샘플 저장
@@ -355,7 +356,8 @@ class ReinforcementLearner:
             logging.info("[{}][Epoch {}/{}] Epsilon:{:.4f} "
                 "#Expl.:{}/{} #Buy:{} #Sell:{} #Hold:{} "
                 "#Stocks:{} PV:{:,.0f} "
-                "LC:{} Loss:{:.6f} ET:{:.4f}".format(
+                "LC:{} Loss:{:.6f} ET:{:.4f}"
+                .format(
                     self.stock_code, epoch_str, num_epoches, epsilon, 
                     self.exploration_cnt, self.itr_cnt,
                     self.agent.num_buy, self.agent.num_sell, 
@@ -390,7 +392,7 @@ class ReinforcementLearner:
             ## model config -> json save
         if self.policy_network is not None and \
                 self.policy_network_path is not None:
-            self.policy_network. _model(self.policy_network_path)
+            self.policy_network.save_model(self.policy_network_path)
 
 
 class DQNLearner(ReinforcementLearner):

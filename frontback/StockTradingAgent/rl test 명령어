@@ -1,0 +1,10 @@
+python main.py --stock_code CJ_RL --rl_method a3c --net lstm --num_steps 5 --output_name cj_test_lstm_E30 --num_epoches 1 --lr 0.001 --start_epsilon 0 --discount_factor 0.9 --reuse_models --value_network_name a3c_lstm_value_cj_E30 --policy_network_name a3c_lstm_policy_cj_E30
+
+
+cat /etc/issue.net
+cat /proc/meminfo
+cat /proc/cpuinfo
+df -h
+nvidia-smi
+python --version
+ls

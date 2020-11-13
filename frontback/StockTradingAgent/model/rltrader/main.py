@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 import sys
 import logging
@@ -32,8 +34,8 @@ if __name__ == '__main__':
     parser.add_argument('--policy_network_name')
     parser.add_argument('--reuse_models', action='store_true')
     parser.add_argument('--learning', action='store_true')
-    parser.add_argument('--start_date', default='20170101')
-    parser.add_argument('--end_date', default='20171231')
+    parser.add_argument('--start_date', default='20140102')
+    parser.add_argument('--end_date', default='20191031')
     args = parser.parse_args()
 
     # Keras Backend 설정
@@ -111,10 +113,11 @@ if __name__ == '__main__':
         # 강화학습 시작
         learner = None
         if args.rl_method != 'a3c':
-            common_params.update({'stock_code': stock_code,
+            common_params.update(**{**'stock_code': stock_code,
                 'chart_data': chart_data, 
                 'training_data': training_data,
-                'min_trading_unit': min_trading_unit, 
+                'min_trading_unit': 
+                min_trading_unit, 
                 'max_trading_unit': max_trading_unit})
             if args.rl_method == 'dqn':
                 learner = DQNLearner(**{**common_params, 
@@ -145,8 +148,8 @@ if __name__ == '__main__':
             list_max_trading_unit.append(max_trading_unit)
 
     if args.rl_method == 'a3c':
-        learner = A3CLearner(**{
-            **common_params, 
+        learner = A3CLearner(**{**
+            common_params, 
             'list_stock_code': list_stock_code, 
             'list_chart_data': list_chart_data, 
             'list_training_data': list_training_data,
