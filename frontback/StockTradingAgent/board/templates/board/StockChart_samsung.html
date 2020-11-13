@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+  <link rel="stylesheet" href="/static/board/assets/css/chart.css">
+  <title>Small Business - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/static/board/assets/css/bootstrap_chart.css" rel="stylesheet">
+  
+  <!-- Custom styles for this template -->
+  <link href="/static/board/assets/css/bootstrap_chart.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    
+      <a class="navbar-brand" href="#">Easy Stock</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+   
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <!-- Heading Row -->
+    <div class="row align-items-center my-5">
+      <div class="col-lg-3">
+        <img src="/static/board/assets/img/삼성전자.png" width="250">
+      </div>
+      <!-- /.col-lg-8 -->
+        <div class ='sell' 
+        style="border:1px solid blue ;
+        <? php if(a==1){?> background-color: blue<?php}?>;
+        padding:20px;font-size: 40px; margin-right: 100px; margin-left: 50px;">매도</div>
+        <div class = 'holding' style="border:1px solid green; 
+        <? php if(a==2){?> background-color: green<?php}?>;
+        padding:20px;font-size: 40px;margin-right: 100px">홀딩</div>
+        <div class = 'buy' style="border:1px solid red; 
+        <? php if(a==0){?> background-color: red<?php}?>;
+        padding:20px;font-size: 40px;">매수</div>
+      <!--<?php if(a==1):?>
+        <div class ='sell' style="border:1px solid blue;padding:20px;font-size: 40px; margin-right: 100px; margin-left: 50px;">매도</div>
+        <div class = 'holding' style="border:1px solid green;background-color: green ; padding:20px;font-size: 40px;margin-right: 100px">홀딩</div>
+        <div class = 'buy' style="border:1px solid red; padding:20px;font-size: 40px;">매수</div>
+      <?php else:?>
+        <div class ='sell' style="border:1px solid blue;padding:20px;font-size: 40px; margin-right: 100px; margin-left: 50px;">매도</div>
+        <div class = 'holding' style="border:1px solid green; padding:20px;font-size: 40px;margin-right: 100px">홀딩</div>
+        <div class = 'buy' style="border:1px solid red;background-color: red ; padding:20px;font-size: 40px;">매수</div>
+      <?php endif;?>-->
+      <div class="col-lg-5">
+        <!--<h1 class="font-weight-light">매도/매수/관망</h1> -->       
+        
+      </div>
+      <!-- /.col-md-4 -->
+    </div>
+    <!-- /.row -->
+
+    <!-- Call to Action Well -->
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+      <div class="card-body">
+    <!--<div id="container" style="height: 400px; min-width: 310px"></div> -->
+    <h3 id="clock" style="color:rgb(183, 255, 245);">00:00</h3>
+    <p></p>
+		<img class = "card-img" src="/static/board/assets/img/Samsung.png" alt=""></script>
+    
+      </div>
+    </div>
+
+    <!-- Content Row -->
+      <!-- /.col-md-4 -->
+      <!--<div class="col-md-4 mb-5">
+        <div class="card h-100" >
+          <div class="card-body">
+            <h2 class="card-title">simulater</h2>
+            <p class="card-text" style="text-align :center;">backTracking을 통해 검토하기</p>
+          </div>
+          <div class="card-footer" style="text-align :center;">
+            <a href="#" class="btn btn-primary btn-sm" >Click!</a>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  
+
+  <script>
+  jQuery(function($) {
+    $(window).on('scroll', function() {
+		if ($(this).scrollTop() >= 200) {
+			$('.navbar').addClass('fixed-top');
+		} else if ($(this).scrollTop() == 0) {
+			$('.navbar').removeClass('fixed-top');
+		}
+	});
+	
+	function adjustNav() {
+		var winWidth = $(window).width(),
+			dropdown = $('.dropdown'),
+			dropdownMenu = $('.dropdown-menu');
+		
+		if (winWidth >= 768) {
+			dropdown.on('mouseenter', function() {
+				$(this).addClass('show')
+					.children(dropdownMenu).addClass('show');
+			});
+			
+			dropdown.on('mouseleave', function() {
+				$(this).removeClass('show')
+					.children(dropdownMenu).removeClass('show');
+			});
+		} else {
+			dropdown.off('mouseenter mouseleave');
+		}
+	}
+	
+	$(window).on('resize', adjustNav);
+	
+	adjustNav();
+});
+</script>
+
+<script>
+var clockTarget = document.getElementById("clock");
+function clock() {
+    var date = new Date();
+    // date Object를 받아오고 
+    var year =date.getFullYear();
+    var month = date.getMonth();
+    // 달을 받아옵니다 
+    var clockDate = date.getDate();
+    // 몇일인지 받아옵니다 
+    var day = date.getDay();
+    // 요일을 받아옵니다. 
+    var week = ['일', '월', '화', '수', '목', '금', '토'];
+    // 요일은 숫자형태로 리턴되기때문에 미리 배열을 만듭니다. 
+    var hours = date.getHours();
+    // 시간을 받아오고 
+    var minutes = date.getMinutes();
+    // 분도 받아옵니다.
+    var seconds = date.getSeconds();
+    // 초까지 받아온후 
+    clockTarget .innerText = `${year}년 ${month+1}월 ${clockDate}일 ${week[day]}요일` +
+    `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes }`  : minutes }:${seconds < 10 ? `0${seconds }`  : seconds }`;
+    // 월은 0부터 1월이기때문에 +1일을 해주고 
+    // 시간 분 초는 한자리수이면 시계가 어색해보일까봐 10보다 작으면 앞에0을 붙혀주는 작업을 3항연산으로 했습니다. 
+}
+function init() {
+clock();
+// 최초에 함수를 한번 실행시켜주고 
+setInterval(clock, 1000);
+// setInterval이라는 함수로 매초마다 실행을 해줍니다.
+// setInterval은 첫번째 파라메터는 함수이고 두번째는 시간인데 밀리초단위로 받습니다. 1000 = 1초 
+}
+init();
+</script>
+</body>
+
+</html>

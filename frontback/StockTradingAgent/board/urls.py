@@ -20,5 +20,5 @@ from django.conf.urls.static import static
 from . import views
 urlpatterns = [
     path('',views.board),
-    path('chart/', views.viewChart)
+    path('chart/', views.viewChart_Samsung)
 ]
