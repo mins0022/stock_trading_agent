@@ -5,5 +5,5 @@ from django.views import View
 def board(request):
     return render(request, 'board/board.html')
 
-def viewChart(request):
-    return render(request,'board/StockChart.html', )
+def viewChart_Samsung(request):
+    return render(request,'board/StockChart_samsung.html', )
