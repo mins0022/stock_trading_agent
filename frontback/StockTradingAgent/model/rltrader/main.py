@@ -113,7 +113,7 @@ if __name__ == '__main__':
         # 강화학습 시작
         learner = None
         if args.rl_method != 'a3c':
-            common_params.update(**{**'stock_code': stock_code,
+            common_params.update({'stock_code': stock_code,
                 'chart_data': chart_data, 
                 'training_data': training_data,
                 'min_trading_unit': 
