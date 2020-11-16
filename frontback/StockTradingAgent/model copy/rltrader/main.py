@@ -25,7 +25,8 @@ if __name__ == '__main__':
     parser.add_argument('--start_epsilon', type=float, default=0)
     parser.add_argument('--balance', type=int, default=10000000)
     # 테스트할때만 넣기
-    # parser.add_argument('--num_stocks', type=int, default=0)
+    parser.add_argument('--num_stocks', type=int, default=0)
+
     parser.add_argument('--num_epoches', type=int, default=100)
     parser.add_argument('--delayed_reward_threshold', 
         type=float, default=0.05)

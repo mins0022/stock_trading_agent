@@ -3,6 +3,7 @@ python3 main.py --stock_code CJ_RL --rl_method a3c --net lstm --num_steps 5 --ou
 
 # test
 python main.py --stock_code CJ_RL --rl_method a3c --net lstm --num_steps 5 --output_name cj_test_withoutSA_lstm_E100_191031_a3c_lstm --num_epoches 1 --start_epsilon 0 --reuse_models --value_network_name a3c_lstm_value_cj_without_E100 --policy_network_name a3c_lstm_policy_cj_without_E100 --start_date 20191101  --end_date 20200102
+python main.py --stock_code CJ_RL --rl_method a3c --net lstm --num_steps 5 --output_name cj_test_withoutSA_lstm_E100_191031_a3c_lstm --num_epoches 1 --start_epsilon 0 --reuse_models --value_network_name a3c_lstm_value_cj_without_E100 --policy_network_name a3c_lstm_policy_cj_without_E100 --start_date 20191101  --end_date 20191101
 
 # train
-python3 main.py --stock_code CJ_RL_withoutSA --rl_method a3c --net lstm --num_steps 5 --output_name cj_train_withoutSA_lstm_E100_191031 --num_epoches 100 --start_epsilon 1 --lr 0.001 --discount_factor 0.9 --learning  --value_network_name a3c_lstm_value_cj_withoutSA_E100 --policy_network_name a3c_lstm_policy_cj_withoutSA_E100
+python main.py --stock_code CJ_RL_train_withoutSAV2_191031 --rl_method a3c --net lstm --num_steps 5 --output_name cj_train_withoutSA_E500_191031 --num_epoches 500 --start_epsilon 1 --lr 0.001 --discount_factor 0.9 --learning  --value_network_name value_cj_withoutSA_E500 --policy_network_name policy_cj_withoutSA_E500
