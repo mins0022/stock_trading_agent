@@ -227,27 +227,20 @@ class ReinforcementLearner:
             learning_idxes=self.memory_learning_idx,
             initial_balance=self.agent.initial_balance, 
             pvs=self.memory_pv,
-        ) # 출력하고자 하는 정보들
-        # print('memory_action: ',self.memory_action[len(memory_action)-1])
-        # print('memory_value: ',self.memory_value[])
-        # print('memory_policy: ',self.memory_policy[])
-        # print('trading_unit: ',self.memory_num_stocks[])
-        # #json -> file 
-        # for i in range(len(self.memory_action)):
-        #     result_dic = {'seq':(i+1),'action':self.memory_action[i],'value':self.memory_value[i],\
-        #         'policy':self.memory_policy[i],'unit':self.trading_unit[i]}
-        #     results_list.append(result_dic)
-        # result_summary = OrderedDict()
-        # result_summary = results_list
-        # with open(os.path.join(self.epoch_summary_dir,'result_summary_{}.json'.format(epoch_str)), \
-        #     'w', encoding="utf-8") as make_file:
-        #     json.dump(result_summary, make_file, ensure_ascii=False, indent="\t")
+        ) 
+        
+        # json -> file
+        result_summary = OrderedDict()
+        result_summary = {'action':str(self.memory_action[-1]),'value':str(self.memory_value[-1]),\
+        'policy':str(self.memory_policy[-1]),'unit':str(self.memory_num_stocks[-2]-self.memory_num_stocks[-1])}
+        
+        with open(os.path.join(self.epoch_summary_dir,'result_summary_{}.json'.format(epoch_str)), \
+            'w', encoding="utf-8") as make_file:
+            json.dump(result_summary, make_file, ensure_ascii=False, indent="\t")
 
-        for i in range(len(self.memory_action)):
-            result_summary['Action'] =
 
         self.visualizer.save(os.path.join(
-            self.epoch_summary_dir, 
+            self.epoch_summary_dir,     
             'epoch_summary_{}.png'.format(epoch_str))
         )
 
