@@ -7,3 +7,4 @@ python main.py --stock_code CJ_RL --rl_method a3c --net lstm --num_steps 5 --out
 
 # train
 python main.py --stock_code CJ_RL_train_withoutSAV2_191031 --rl_method a3c --net lstm --num_steps 5 --output_name cj_train_withoutSA_E500_191031 --num_epoches 500 --start_epsilon 1 --lr 0.001 --discount_factor 0.9 --learning  --value_network_name value_cj_withoutSA_E500 --policy_network_name policy_cj_withoutSA_E500
+python main.py --stock_code CJ_RL_V2_withSA --rl_method a3c --net lstm --num_steps 5 --output_name cj_train_v2_withSA_E200_6yr --num_epoches 200 --start_epsilon 1 --lr 0.0001 --discount_factor 0.9 --learning  --value_network_name value_cj_v2_withSA_E200_6yr --policy_network_name policy_cj_v2_withSA_E200_6yr --start_date 20140102 --end_date 20191031
