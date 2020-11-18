@@ -6,6 +6,7 @@ import threading
 import time
 import numpy as np
 import json
+import utils
 from collections import OrderedDict
 from utils import sigmoid
 from environment import Environment
@@ -234,7 +235,8 @@ class ReinforcementLearner:
         result_summary = {'action':str(self.memory_action[-1]),'value':str(self.memory_value[-1]),\
         'policy':str(self.memory_policy[-1]),'unit':str(self.memory_num_stocks[-2]-self.memory_num_stocks[-1])}
         
-        with open(os.path.join(self.epoch_summary_dir,'result_summary_{}.json'.format(epoch_str)), \
+        front_dir = '../../board/static/board/assets/json'
+        with open(os.path.join(front_dir,'result_{}_{}.json'.format(self.stock_code,utils.get_time_str())), \
             'w', encoding="utf-8") as make_file:
             json.dump(result_summary, make_file, ensure_ascii=False, indent="\t")
 
