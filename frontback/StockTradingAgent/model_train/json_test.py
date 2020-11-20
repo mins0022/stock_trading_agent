@@ -23,8 +23,7 @@ result_summary = {'action':memory_action[-1],'value':memory_value[-1],\
 print(json.dumps(result_summary, ensure_ascii=False, indent="\t"))
 
 epoch_str=1
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-output_path = os.path.join(BASE_DIR, 
-        'rltrader/output')
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+output_path = '../../board/static/board/assets/json'
 with open(os.path.join(output_path,'result_summary_{}.json'.format(epoch_str)), 'w', encoding="utf-8") as make_file:
     json.dump(result_summary, make_file, ensure_ascii=False, indent="\t")
