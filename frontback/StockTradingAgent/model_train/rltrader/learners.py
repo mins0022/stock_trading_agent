@@ -21,7 +21,7 @@ class ReinforcementLearner:
 
     def __init__(self, rl_method='rl', stock_code=None, 
                 chart_data=None, training_data=None,
-                min_trading_unit=1, max_trading_unit=2, 
+                min_trading_unit=1, max_trading_unit=10, 
                 delayed_reward_threshold=.05,
                 net='dnn', num_steps=1, lr=0.001,
                 value_network=None, policy_network=None,
@@ -232,8 +232,16 @@ class ReinforcementLearner:
         
         # json -> file
         result_summary = OrderedDict()
-        result_summary = {'action':str(self.memory_action[-1]),'value':str(self.memory_value[-1]),\
-        'policy':str(self.memory_policy[-1]),'unit':str(self.memory_num_stocks[-2]-self.memory_num_stocks[-1])}
+        if len(self.memory_num_stocks) <= 1:
+            result_summary = {'action':str(self.memory_action[-1]),\
+                'value':str(self.memory_value[-1]),\
+                    'policy':str(self.memory_policy[-1]),\
+                        'unit':str(abs(10-self.memory_num_stocks[-1]))}
+        else:
+            result_summary = {'action':str(self.memory_action[-1]),\
+                'value':str(self.memory_value[-1]),\
+                    'policy':str(self.memory_policy[-1]),\
+                        'unit':str(abs(self.memory_num_stocks[-2]-self.memory_num_stocks[-1]))}
         
         front_dir = '../../board/static/board/assets/json'
         with open(os.path.join(front_dir,'result_{}_{}.json'.format(self.stock_code,utils.get_time_str())), \
@@ -247,7 +255,7 @@ class ReinforcementLearner:
         )
 
     def run(
-        self, num_epoches=100, balance=10000000, num_stocks=0,
+        self, num_epoches=100, balance=10000000, num_stocks=10,
         discount_factor=0.9, start_epsilon=0.5, learning=True): #, num_stocks=10
         info = "[{code}] RL:{rl} Net:{net} LR:{lr} " \
             "DF:{discount_factor} TU:[{min_trading_unit}," \

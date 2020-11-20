@@ -387,12 +387,13 @@ class ReinforcementLearner:
 
     def save_models(self):
         if self.value_network is not None and \
-                self.value_network_path is not None:
-            self.value_network.save_model(self.value_network_path)
+                self.value_network_path is not None:\
+            self.value_network.save_model(self.value_network_path, overwrite=False)
             ## model config -> json save
         if self.policy_network is not None and \
                 self.policy_network_path is not None:
-            self.policy_network.save_model(self.policy_network_path)
+                # and learning:
+            self.policy_network.save_model(self.policy_network_path, overwrite=False)
 
 
 class DQNLearner(ReinforcementLearner):

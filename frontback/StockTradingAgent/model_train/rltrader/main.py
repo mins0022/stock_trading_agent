@@ -35,7 +35,7 @@ if __name__ == '__main__':
     parser.add_argument('--output_name', default=utils.get_time_str())
     parser.add_argument('--value_network_name')
     parser.add_argument('--policy_network_name')
-    parser.add_argument('--reuse_models', action='store_true')
+    parser.add_argument('--reuse_models', action='store_false')
     parser.add_argument('--learning', action='store_true')
     parser.add_argument('--start_date', default='20140102')
     parser.add_argument('--end_date', default='20191031')
@@ -167,5 +167,11 @@ if __name__ == '__main__':
                     discount_factor=args.discount_factor, 
                     start_epsilon=args.start_epsilon,
                     learning=args.learning)
-        learner.save_models()
+        
+        if args.learning is not None:
+            pass
+        else:
+            print(args.learning)
+            learner.save_models()
+
         

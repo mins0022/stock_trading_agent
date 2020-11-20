@@ -22,7 +22,7 @@ class Agent:
     NUM_ACTIONS = len(ACTIONS)  # 인공 신경망에서 고려할 출력값의 개수
 
     def __init__(
-        self, environment, min_trading_unit=1, max_trading_unit=2, 
+        self, environment, min_trading_unit=1, max_trading_unit=10, 
         delayed_reward_threshold=.05):
         # Environment 객체
         # 현재 주식 가격을 가져오기 위해 환경 참조
