@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://code.highcharts.com/stock/highstock.js"></script>
@@ -35,7 +37,7 @@
           $('#holding').prop('style',"border:1px solid blue; background-color: green; padding:20px; font-size: 40px; margin-right: 100px; margin-left: 50px;");
         }else{
           $('#buy').prop('style',"border:1px solid red; background-color: red; padding:20px; font-size: 40px; margin-right: 100px; margin-left: 50px;");
-          $('#probability').append('강화학습 기반 매수 확률 : ' + Math.round(value.policy[0]*10000) /100+ '%' );
+          $('#probability').append('※ 강화학습 기반 매수 확률 : ' + Math.round(value.policy[0]*10000) /100+ '% ※' );
         }
       });
     });
@@ -44,8 +46,7 @@
 
 
 
-<body>
-
+<body> 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     
@@ -79,7 +80,7 @@
     <!-- Heading Row -->
     <div class="row align-items-center my-5">
       <div class="col-lg-3">
-        <img src="/static/board/assets/img/삼성전자.png" width="250">
+        <img src="/static/board/assets/img/삼성전자.png" width="250" >
       </div>
       <!-- /.col-lg-8 -->
       <div id ='sell' 
@@ -92,18 +93,9 @@
       <div id = 'buy' style="border:1px solid red;
       padding:20px;font-size: 40px;">매수</div>
 
-      <!--<?php if(a==1):?>
-        <div class ='sell' style="border:1px solid blue;padding:20px;font-size: 40px; margin-right: 100px; margin-left: 50px;">매도</div>
-        <div class = 'holding' style="border:1px solid green;background-color: green ; padding:20px;font-size: 40px;margin-right: 100px">홀딩</div>
-        <div class = 'buy' style="border:1px solid red; padding:20px;font-size: 40px;">매수</div>
-      <?php else:?>
-        <div class ='sell' style="border:1px solid blue;padding:20px;font-size: 40px; margin-right: 100px; margin-left: 50px;">매도</div>
-        <div class = 'holding' style="border:1px solid green; padding:20px;font-size: 40px;margin-right: 100px">홀딩</div>
-        <div class = 'buy' style="border:1px solid red;background-color: red ; padding:20px;font-size: 40px;">매수</div>
-      <?php endif;?>-->
-      <div id="col-lg-5" style = 'margin-left :420px'>
-        <!--<h1 class="font-weight-light">매도/매수/관망</h1> -->       
-      <h2 id = 'probability' style="font-weight: bolder;"></h2>
+      <div id="col-lg-5">
+        <!--<h1 class="font-weight-light">매도/매수/관망</h1> -->
+      <h2 id = 'probability' style="font-weight: bolder;padding-left :400px;"></h2>
       </div>
       <!-- /.col-md-4 -->
     </div>
@@ -111,11 +103,18 @@
 
     <!-- Call to Action Well -->
     <div class="card text-white bg-secondary my-5 py-4 text-center">
+      
       <div class="card-body">
-    <!--<div id="container" style="height: 400px; min-width: 310px"></div> -->
-    <h3 id="clock" style="color:rgb(183, 255, 245);">00:00</h3>
-    <p></p>
-		<img class = "card-img" src="/static/board/assets/img/Samsung.png" alt=""></script>
+        <!--<div id="container" style="height: 500px; min-width: 310px">-->
+            <h3 id="clock" style="color:rgb(183, 255, 245);">00:00</h3>
+            <p>
+              삼성전자
+            </p>
+            <img class = "card-img" src="/static/board/assets/img/Samsung.png" alt=""></script>
+            
+        <!--</div>-->
+      </div>
+
     
       </div>
     </div>
