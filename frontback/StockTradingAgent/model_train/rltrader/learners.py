@@ -234,13 +234,13 @@ class ReinforcementLearner:
         result_summary = OrderedDict()
         if len(self.memory_num_stocks) <= 1:
             result_summary = {'action':str(self.memory_action[-1]),\
-                'value':str(self.memory_value[-1]),\
-                    'policy':str(self.memory_policy[-1]),\
+                'value':self.memory_value[-1].tolist(),\
+                    'policy':self.memory_policy[-1].tolist(),\
                         'unit':str(abs(10-self.memory_num_stocks[-1]))}
         else:
             result_summary = {'action':str(self.memory_action[-1]),\
-                'value':str(self.memory_value[-1]),\
-                    'policy':str(self.memory_policy[-1]),\
+                'value':self.memory_value[-1].tolist(),\
+                    'policy':self.memory_policy[-1].tolist(),\
                         'unit':str(abs(self.memory_num_stocks[-2]-self.memory_num_stocks[-1]))}
         
         front_dir = '../../board/static/board/assets/json'
@@ -369,7 +369,8 @@ class ReinforcementLearner:
             if learning:
                 self.fit(
                     self.agent.profitloss, discount_factor, full=True)
-
+            # earlystop 추가
+            
             # 에포크 관련 정보 로그 기록
             num_epoches_digit = len(str(num_epoches))
             epoch_str = str(epoch + 1).rjust(num_epoches_digit, '0')
