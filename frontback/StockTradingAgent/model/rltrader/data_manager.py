@@ -40,7 +40,7 @@ COLUMNS_TRAINING_DATA_V2 = [
     'close_ma20_ratio', 'volume_ma20_ratio',
     'close_ma60_ratio', 'volume_ma60_ratio',
     'close_ma120_ratio', 'volume_ma120_ratio',
-    'count','pos','neg'
+    # 'count','pos','neg'
     # 'market_kospi_ma5_ratio', 'market_kospi_ma20_ratio', 
     # 'market_kospi_ma60_ratio', 'market_kospi_ma120_ratio', 
     # 'bond_k3y_ma5_ratio', 'bond_k3y_ma20_ratio', 

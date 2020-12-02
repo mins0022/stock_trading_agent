@@ -25,7 +25,8 @@ if __name__ == '__main__':
     parser.add_argument('--start_epsilon', type=float, default=0)
     parser.add_argument('--balance', type=int, default=10000000)
     # 테스트할때만 넣기
-    # parser.add_argument('--num_stocks', type=int, default=0)
+    parser.add_argument('--num_stocks', type=int, default=0)
+
     parser.add_argument('--num_epoches', type=int, default=100)
     parser.add_argument('--delayed_reward_threshold', 
         type=float, default=0.05)
@@ -103,8 +104,10 @@ if __name__ == '__main__':
             args.start_date, args.end_date, ver=args.ver)
         
         # 최소/최대 투자 단위 설정
-        min_trading_unit = max(int(100000 / chart_data.iloc[-1]['close']), 1)
-        max_trading_unit = max(int(1000000 / chart_data.iloc[-1]['close']), 1)
+        min_trading_unit = 2
+        # max(int(100000 / chart_data.iloc[-1]['close']), 1)
+        max_trading_unit = 25
+        # max(int(2000000 / chart_data.iloc[-1]['close']), 1)
 
         # 공통 파라미터 설정
         common_params = {'rl_method': args.rl_method, 
@@ -165,11 +168,12 @@ if __name__ == '__main__':
         learner.run(balance=args.balance, num_epoches=args.num_epoches, 
                     discount_factor=args.discount_factor, 
                     start_epsilon=args.start_epsilon,
-                    learning=args.learning)
+                    learning=args.learning, num_stocks=args.num_stocks)
+        
+        if args.learning is not None:
+            pass
+        else:
+            print(args.learning)
+            learner.save_models()
 
-        # if args.learning is not None:
-        #     pass
-        # else:
-        #     print(args.learning)
-        learner.save_models()
         

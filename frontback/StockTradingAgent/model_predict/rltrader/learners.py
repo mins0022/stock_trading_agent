@@ -5,6 +5,9 @@ import collections
 import threading
 import time
 import numpy as np
+import json
+import utils
+from collections import OrderedDict
 from utils import sigmoid
 from environment import Environment
 from agent import Agent
@@ -18,7 +21,7 @@ class ReinforcementLearner:
 
     def __init__(self, rl_method='rl', stock_code=None, 
                 chart_data=None, training_data=None,
-                min_trading_unit=1, max_trading_unit=2, 
+                min_trading_unit=1, max_trading_unit=10, 
                 delayed_reward_threshold=.05,
                 net='dnn', num_steps=1, lr=0.001,
                 value_network=None, policy_network=None,
@@ -225,15 +228,38 @@ class ReinforcementLearner:
             learning_idxes=self.memory_learning_idx,
             initial_balance=self.agent.initial_balance, 
             pvs=self.memory_pv,
-        )
+        ) 
+        # print(confidence)
+        # print('action: ',str(self.memory_action[-1]))
+        # print('unit: ',(self.agent.initial_num_stocks-self.memory_num_stocks[-1]))
+        # json -> file
+        result_summary = OrderedDict()
+        if len(self.memory_num_stocks) <= 1:
+            result_summary = {'action':str(self.memory_action[-1]),\
+                'value':self.memory_value[-1].tolist(),\
+                    'policy':self.memory_policy[-1].tolist(),\
+                        'unit':str(abs(self.agent.initial_num_stocks-self.memory_num_stocks[-1]))}
+        else:
+            result_summary = {'action':str(self.memory_action[-1]),\
+                'value':self.memory_value[-1].tolist(),\
+                    'policy':self.memory_policy[-1].tolist(),\
+                        'unit':str(abs(self.memory_num_stocks[-2]-self.memory_num_stocks[-1]))}
+        
+        front_dir = '../../board/static/board/assets/json'
+        with open(os.path.join(front_dir,'result_{}_{}.json'.format(self.stock_code,utils.get_time_str())), \
+            'w', encoding="utf-8") as make_file:
+            json.dump(result_summary, make_file, ensure_ascii=False, indent="\t")
+
+
         self.visualizer.save(os.path.join(
-            self.epoch_summary_dir, 
+            self.epoch_summary_dir,     
             'epoch_summary_{}.png'.format(epoch_str))
         )
 
     def run(
-        self, num_epoches=100, balance=10000000,
-        discount_factor=0.9, start_epsilon=0.5, learning=True):
+        self, num_epoches=100, balance=10000000, num_stocks=10,
+        discount_factor=0.9, start_epsilon=0.5, learning=True): #, num_stocks=10
+        # print('rl_num_stocks: ',num_stocks, 'balance: ',balance)
         info = "[{code}] RL:{rl} Net:{net} LR:{lr} " \
             "DF:{discount_factor} TU:[{min_trading_unit}," \
             "{max_trading_unit}] DRT:{delayed_reward_threshold}".format(
@@ -264,7 +290,9 @@ class ReinforcementLearner:
                 os.remove(os.path.join(self.epoch_summary_dir, f))
 
         # 에이전트 초기 자본금 설정
-        self.agent.set_balance(balance)
+        # print('learner set num: ', num_stocks)
+        self.agent.set_balance(balance, num_stocks)
+        # self.agent.set_num_stocks(num_stocks)
 
         # 학습에 대한 정보 초기화
         max_portfolio_value = 0
@@ -345,7 +373,8 @@ class ReinforcementLearner:
             if learning:
                 self.fit(
                     self.agent.profitloss, discount_factor, full=True)
-
+            # earlystop 추가
+            
             # 에포크 관련 정보 로그 기록
             num_epoches_digit = len(str(num_epoches))
             epoch_str = str(epoch + 1).rjust(num_epoches_digit, '0')
@@ -387,12 +416,11 @@ class ReinforcementLearner:
 
     def save_models(self):
         if self.value_network is not None and \
-                self.value_network_path is not None:\
+                self.value_network_path is not None:
             self.value_network.save_model(self.value_network_path)
             ## model config -> json save
         if self.policy_network is not None and \
                 self.policy_network_path is not None:
-                # and learning:
             self.policy_network.save_model(self.policy_network_path)
 
 
@@ -560,7 +588,8 @@ class A3CLearner(ReinforcementLearner):
 
     def run(
         self, num_epoches=100, balance=10000000,
-        discount_factor=0.9, start_epsilon=0.5, learning=True):
+        discount_factor=0.9, start_epsilon=0.5, learning=True, num_stocks=0):
+        # print('a3c_num_stocks: ',num_stocks,'balance: ',balance)
         threads = []
         for learner in self.learners:
             threads.append(threading.Thread(
@@ -568,7 +597,7 @@ class A3CLearner(ReinforcementLearner):
                 'num_epoches': num_epoches, 'balance': balance,
                 'discount_factor': discount_factor, 
                 'start_epsilon': start_epsilon,
-                'learning': learning
+                'learning': learning, 'num_stocks': num_stocks
             }))
         for thread in threads:
             thread.start()
