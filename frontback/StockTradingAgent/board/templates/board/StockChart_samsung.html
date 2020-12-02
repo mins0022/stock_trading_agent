@@ -23,25 +23,25 @@
 
 </head>
 <script>
-  $(document).ready(function(){
-    $.getJSON('/static/board/assets/json/result_CJ_RL_V2_withSA_20201118155811.json',function(data){
-      $.each(data,function(key,value){
-        test1 = data;
-        test2 = key;
-        test3 = value;
-        actionNum =  value.action;
-        if (actionNum == "1"){
-          $('#sell').prop('style',"border:1px solid blue; background-color: blue; padding:20px; font-size: 40px; margin-right: 100px; margin-left: 50px;");
-          // $('#probability').append('※ 강화학습 기반 매도 확률 : ' + Math.round(value.policy[1]*10000) /100 + '% ※' );
-        }else if (actionNum == "2"){
-          $('#holding').prop('style',"border:1px solid blue; background-color: green; padding:20px; font-size: 40px; margin-right: 100px; margin-left: 50px;");
-        }else{
-          $('#buy').prop('style',"border:1px solid red; background-color: red; padding:20px; font-size: 40px; margin-right: 100px; margin-left: 50px;");
-          // $('#probability').append('※ 강화학습 기반 매수 확률 : ' + Math.round(value.policy[0]*10000) /100+ '% ※' );
-        }
-      });
-    });
-  });
+  // $(document).ready(function(){
+  //   $.getJSON('/static/board/assets/json/test_summary.json',function(data){
+  //     $.each(data,function(key,value){
+  //       test1 = data;
+  //       test2 = key;
+  //       test3 = value;
+  //       actionNum =  value.action;
+  //       if (actionNum == "1"){
+  //         $('#sell').prop('style',"border:1px solid blue; background-color: blue; padding:20px; font-size: 40px; margin-right: 100px; margin-left: 50px;");
+  //         // $('#probability').append('※ 강화학습 기반 매도 확률 : ' + Math.round(value.policy[1]*10000) /100 + '% ※' );
+  //       }else if (actionNum == "2"){
+  //         $('#holding').prop('style',"border:1px solid blue; background-color: green; padding:20px; font-size: 40px; margin-right: 100px; margin-left: 50px;");
+  //       }else{
+  //         $('#buy').prop('style',"border:1px solid red; background-color: red; padding:20px; font-size: 40px; margin-right: 100px; margin-left: 50px;");
+  //         // $('#probability').append('※ 강화학습 기반 매수 확률 : ' + Math.round(value.policy[0]*10000) /100+ '% ※' );
+  //       }
+  //     });
+  //   });
+  // });
 </script>
 
 
@@ -85,7 +85,7 @@
       <!-- /.col-lg-8 -->
       <div id ='sell' 
       style="border:1px solid blue;
-      padding:20px;font-size: 40px; margin-right: 100px; margin-left: 50px;">매도</div>
+      padding:20px;font-size: 40px; margin-right: 100px; margin-left: 50px;background-color: blue;">매도</div>
 
       <div id = 'holding' style="border:1px solid green; 
       padding:20px;font-size: 40px;margin-right: 100px">홀딩</div>
@@ -110,7 +110,7 @@
             <p>
               삼성전자
             </p>
-            <img class = "card-img" src="/static/board/assets/img/Samsung.png" alt=""></script>
+            <img class = "card-img" src="/static/board/assets/img/201118.png" alt=""></script>
             
         <!--</div>-->
       </div>
